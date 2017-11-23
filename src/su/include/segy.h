@@ -694,6 +694,7 @@ typedef struct {	/* bhed - binary header */
 } bhed;
 
 /* DEFINES */
+#define resettr()	fresettr()
 #define gettr(x)	fgettr(stdin, (x))
 #define vgettr(x)	fvgettr(stdin, (x))
 #define puttr(x)	fputtr(stdout, (x))
@@ -819,7 +820,10 @@ extern "C" {
 #endif
 
 /* get trace and put trace */
+int fgetsizetr();
+int fresettr(); //reset internal stdin
 int fgettr(FILE *fp, segy *tp);
+// int fgettrh(FILE *fp, traceHeader *tp);
 int fvgettr(FILE *fp, segy *tp);
 void fputtr(FILE *fp, segy *tp);
 void fvputtr(FILE *fp, segy *tp);

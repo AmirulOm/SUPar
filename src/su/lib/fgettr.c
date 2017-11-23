@@ -279,6 +279,34 @@ int fgettr(FILE *fp, segy *tp)
  return(fgettr_internal(fp,tp,cwp_true));
 }
 
+int fresettr_internal()
+{
+	infoptr = NULL;
+}
+
+int fresettr()
+{
+ return(fresettr_internal());
+}
+
+int fgetsizetr_internal()
+{
+	if(infoptr != NULL)
+	 {
+		 fseek(infoptr->infp, 0L, SEEK_END);
+		 long int sz = ftell(infoptr->infp);
+		 fseek(infoptr->infp, 0L, SEEK_SET);
+		 return sz;
+       // long int sz = ftell(STDIN);
+	 }
+	return 0;
+}
+
+int fgetsizetr()
+{
+ return(fgetsizetr_internal());
+}
+
 int fvgettr(FILE *fp, segy *tp)
 {
  return(fgettr_internal(fp,tp,cwp_false));

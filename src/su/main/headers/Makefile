@@ -46,7 +46,7 @@ INSTALL	:	$(PROGS)
 
 
 $(PROGS):	$(CTARGET) $D 
-	-$(CC) $(CFLAGS) $(@F).c $(LFLAGS) -o $@
+	-$(CC) $(CFLAGS) -fopenmp $(@F).c $(LFLAGS) -o $@
 	@$(MCHMODLINE)
 	@echo $(@F) installed in $B
 
